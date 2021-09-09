@@ -2,8 +2,10 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Panel } from "rsuite";
 
 export default function Venue(props) {
+  //venue data
   const { venueData } = props;
-  console.log(venueData);
+
+  //panel group
   return (
     <Container>
       <Panel>

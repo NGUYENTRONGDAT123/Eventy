@@ -1,8 +1,10 @@
 import { Container } from "react-bootstrap";
 
 export default function Tickets(props) {
+  //tickets' data
   const { ticketsData, url } = props;
 
+  //Tickets info
   return (
     <Container>
       <p>Tickets Count: {ticketsData.listing_count}</p>
@@ -15,25 +17,3 @@ export default function Tickets(props) {
     </Container>
   );
 }
-
-// "stats": {
-//             "listing_count": 1,
-//             "average_price": 133,
-//             "lowest_price_good_deals": null,
-//             "lowest_price": 133,
-//             "highest_price": 190,
-//             "visible_listing_count": 1,
-//             "dq_bucket_counts": [
-//                 0,
-//                 0,
-//                 0,
-//                 0,
-//                 0,
-//                 0,
-//                 0,
-//                 1
-//             ],
-//             "median_price": 127,
-//             "lowest_sg_base_price": 88,
-//             "lowest_sg_base_price_good_deals": null
-//         },

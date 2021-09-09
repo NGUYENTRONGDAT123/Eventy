@@ -10,11 +10,14 @@ import Venue from "../../components/venue/Venue";
 import Tickets from "../../components/tickets/Tickets";
 import News from "../../components/news/News";
 
+// One event Page
 export default function EventPage() {
   const { id } = useParams();
 
+  //fetching data
   const { repo, isLoading } = FetchEvent(id);
 
+  // if loading
   if (isLoading) {
     return (
       <div class="parent-loader">
@@ -26,24 +29,35 @@ export default function EventPage() {
         </div>
       </div>
     );
-  } else {
+  }
+  //loading complete
+  else {
     return (
       <Container>
+        {/* Title */}
         <h1>{repo.event.title}</h1>
 
+        {/* Venue */}
         <h2> Venue Information </h2>
         <h2>{repo.short_title}</h2>
         <Venue venueData={repo.event} />
 
+        {/* Performers */}
         <h2>Performers Info</h2>
         <Performers performersData={repo.event.performers} />
+
+        {/* Tickets */}
         <h2>Tickets Info </h2>
         <Tickets ticketsData={repo.event.stats} url={repo.event.url} />
+
+        {/* Weather */}
         <h2>Weather</h2>
         <Weather
           data={repo.weather.data[0]}
           address={repo.event.venue.address}
         />
+
+        {/* News */}
         <h2>News About The Venue or Performers</h2>
         <News newsData={repo.news.articles} />
       </Container>

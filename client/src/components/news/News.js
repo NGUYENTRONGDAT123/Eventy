@@ -3,9 +3,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import { PanelGroup, Panel } from "rsuite";
 import "./News.css";
 
+//news panel
 export default function News(props) {
+  //news' data
   const { newsData } = props;
-  console.log(newsData);
+
+  //news group
   return (
     <Container>
       <PanelGroup>

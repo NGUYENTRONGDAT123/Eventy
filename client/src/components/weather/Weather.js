@@ -3,7 +3,10 @@ import { Container, Row, Col } from "react-bootstrap";
 import "./Weather.css";
 
 export default function Weather(props) {
+  //weathers' data and address of the venue
   const { data, address } = props;
+
+  //displaying the weather
   return (
     <Container className="weather-info">
       <Row>

@@ -5,7 +5,9 @@ import { Panel, PanelGroup } from "rsuite";
 import { Container, Row, Col } from "react-bootstrap";
 import "./Events.css";
 
+// Displayng 25 events
 export default function EventsPage() {
+  //fetching data
   const data = FetchAllEvents();
 
   const history = useHistory();

@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import { Panel } from "rsuite";
 import "./Home.css";
 
+//Home page
 export default function Home() {
   return (
     <Container>

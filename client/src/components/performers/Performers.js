@@ -1,8 +1,12 @@
 import { Row, Col } from "react-bootstrap";
 import { Panel, PanelGroup } from "rsuite";
 
+//performers panel
 export default function Performers(props) {
+  //performers' data
   const { performersData } = props;
+
+  //panel group
   let i = 0;
   return (
     <PanelGroup accordion defaultActiveKey={1} bordered>
