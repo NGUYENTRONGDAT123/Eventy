@@ -1,0 +1,27 @@
+.rs-panel-hoverable {
+  padding: 20px;
+  min-width: 1116px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 0;
+  transition: 1s;
+}
+
+.rs-panel-hoverable:hover {
+  transition: transform 125ms;
+  transform: translateY(-10px);
+}
+.rs-panel-hoverable:hover h2 {
+  color: chocolate;
+}
+
+image {
+  display: inline-block;
+}
+
+@media screen and (max-width: 1024px) {
+  #container {
+    max-width: 960px;
+  }
+}
