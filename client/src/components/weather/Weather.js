@@ -38,7 +38,7 @@ export default function Weather(props) {
           <h5>City: {data.city_name}</h5>
           <h5 className="additional-padding">Country: {data.country_code}</h5>
           <h3>Timezone: {data.timezone.replaceAll("_", " ")}</h3>
-          <h5>Data last fetched on: {data.ob_time}</h5>
+          <h5>Data last fetched on: {data.ob_time.substring(0, 10)}</h5>
           <h5>Sunrise at {data.sunrise}</h5>
           <h5>Sunset at {data.sunset}</h5>
         </Col>
