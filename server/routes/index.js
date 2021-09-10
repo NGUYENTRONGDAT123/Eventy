@@ -8,6 +8,7 @@ const { promisify } = require("util");
 //API keys
 const eventKey = process.env.GEEKSEAT_API_KEY;
 const newsKey = process.env.NEWS_API_KEY;
+const weatherKey = process.env.WEATHER_API_KEY;
 
 //  create redis client and connect to redis server
 const redis_url = process.env.REDIS_URL || "redis://127.0.0.1";
@@ -52,7 +53,7 @@ router.get("/event/:eventID", async function (req, res, next) {
         //using events' location to get the locations' weather
         const location = eventData.data.venue.location;
         const weatherData = await axios.get(
-          `https://api.weatherbit.io/v2.0/current?lat=${location.lat}&lon=${location.lon}&key=434a18e3171d47d4995b18e2ba047999`
+          `https://api.weatherbit.io/v2.0/current?lat=${location.lat}&lon=${location.lon}&key=${weatherKey}`
         );
 
         // using the venue name to get the news regrading to it
