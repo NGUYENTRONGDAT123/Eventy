@@ -1,15 +1,20 @@
-FROM NODE:14
+FROM ubuntu
+
+MAINTAINER n10324321
+
+#update
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+
+#Install npm
+RUN apt-get install npm -y
 
 #Install nodemon
 RUN npm i nodemon -g
 
 #create app directory
+COPY . /app
 WORKDIR /app
-
-#Copy files to app
-COPY package.json ./
-COPY package-lock.json ./
-COPY ./ ./
 
 # Install dependencies
 RUN npm i
