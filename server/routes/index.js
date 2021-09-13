@@ -1,7 +1,8 @@
 var express = require("express");
 var router = express.Router();
 const axios = require("axios");
-const dotenv = require("dotenv").config();
+var path = require("path");
+const dotenv = require("dotenv").config({ path: path.join(__dirname, ".env") });
 
 //API keys
 const eventKey = process.env.GEEKSEAT_API_KEY;
@@ -16,7 +17,8 @@ router.get("/events", async function (req, res, next) {
     );
     return res.status(200).json(eventsData.data);
   } catch (err) {
-    res.status(404).json({ error: "Bad Request!" });
+    next(err);
+    // res.status(404).json({ error: "Bad Request!" });
   }
 });
 
