@@ -4,7 +4,7 @@ const axios = require("axios").default;
 // fetch all events data
 export function FetchAllEvents() {
   const [repo, setRepo] = React.useState([]);
-  const url = "http://localhost:3001/events";
+  const url = "http://0.0.0.0:3001/events";
 
   const getRepo = async () => {
     try {
@@ -31,7 +31,7 @@ export function FetchAllEvents() {
 export function FetchEvent(id) {
   const [isLoading, setLoading] = React.useState(true);
   const [repo, setRepo] = React.useState([]);
-  const url = `http://localhost:3001/event/${id}`;
+  const url = `http://0.0.0.0:3001/event/${id}`;
 
   const getRepo = async () => {
     try {

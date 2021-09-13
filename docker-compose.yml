@@ -4,13 +4,13 @@ services:
     build:
       context: ./server
       dockerfile: ./Dockerfile
-    image: "n10324321/eventy-server"
+    image: "dc/eventy-server"
     ports:
       - "3001:3001"
   client:
     build:
       context: ./client
       dockerfile: ./Dockerfile
-    image:"n10324321/eventy-client"
+    image:"dc/eventy-client"
     ports:
       -"3000:3000"

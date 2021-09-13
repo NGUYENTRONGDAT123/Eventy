@@ -1,7 +1,5 @@
 FROM ubuntu
 
-MAINTAINER n10324321
-
 #update
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
@@ -18,13 +16,13 @@ WORKDIR /app
 
 
 # Install dependencies in server
-RUN cd ./server
+WORKDIR /app/server
 RUN npm i
 #run the server
 RUN npm start
 
 # Install dependencies in client
-RUN cd ../client
+WORKDIR /app/client
 RUN npm i
 
 #Expose port
