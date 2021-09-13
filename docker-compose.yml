@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 services:
   server:
     build:
@@ -11,6 +11,19 @@ services:
     build:
       context: ./client
       dockerfile: ./Dockerfile
-    image:"dc/eventy-client"
+    image: "dc/eventy-client"
     ports:
-      -"3000:3000"
+      - "3000:3000"
+    links:
+      - "server"
+
+  nginx:
+    depends_on:
+      - server
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "3050:3002"

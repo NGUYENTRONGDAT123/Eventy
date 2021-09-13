@@ -10,7 +10,7 @@ const newsKey = process.env.NEWS_API_KEY;
 const weatherKey = process.env.WEATHER_API_KEY;
 
 /* GET ALL EVENTs info */
-router.get("/events", async function (req, res, next) {
+router.get("/eventsAPI", async function (req, res, next) {
   try {
     const eventsData = await axios.get(
       `https://api.seatgeek.com/2/events?client_id=${eventKey}&per_page=30&listing_count.gt=0`
@@ -23,7 +23,7 @@ router.get("/events", async function (req, res, next) {
 });
 
 /* GET 1 event info and its weather. */
-router.get("/event/:eventID", async function (req, res, next) {
+router.get("/eventAPI/:eventID", async function (req, res, next) {
   const eventID = req.params.eventID;
   const redisKey = `/events/${eventID}`;
 
