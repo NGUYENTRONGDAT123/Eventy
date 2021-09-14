@@ -7,26 +7,24 @@ RUN apt-get update
 #Install npm
 RUN apt-get install npm -y
 
-#Install pm2
-RUN npm i pm2 -g
+#Install nodemon
+RUN npm i nodemon -g
 
 #create app directory
 COPY . /app
-WORKDIR /app
-
-
-# Install dependencies in server
-WORKDIR /app/server
-RUN npm i
-#run the server
-RUN npm start
 
 # Install dependencies in client
 WORKDIR /app/client
 RUN npm i
+# Build client
+RUN npm run build
+
+# Install dependencies in server
+WORKDIR /app/server
+RUN npm i
 
 #Expose port
-EXPOSE 3000
+EXPOSE 3001
 
 #start
 CMD ["npm", "start"]
