@@ -84,3 +84,6 @@ p {
   border: solid white 10px;
   border-radius: 50%;
 }
+.rs-btn {
+  margin-left: 20px;
+}

@@ -2,28 +2,28 @@ const React = require("react");
 const axios = require("axios").default;
 
 // fetch all events data
-export function FetchAllEvents() {
+export function FetchAllEvents(q, page) {
   const [repo, setRepo] = React.useState([]);
-  const url = `/eventsAPI`;
-
+  const [isLoading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState({ status: false, message: "" });
+  const url = `http://localhost:3001/eventsAPI?q=${q}&page=${page}`;
   const getRepo = async () => {
-    try {
-      const res = await axios.get(url);
-      if (res.statusText === "OK") {
-        // console.log(res.data);
-        const myRepo = res.data.events;
-        setRepo(myRepo);
-      }
-    } catch (err) {
-      console.log(err);
-    }
+    await axios
+      .get(url)
+      .then((res) => {
+        setRepo(res.data.events);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError({ status: true, message: err.response.data.error });
+      });
   };
 
   React.useEffect(() => {
     getRepo();
-  }, []);
+  }, [q, page]);
   if (repo !== []) {
-    return repo;
+    return { repo, isLoading, error };
   }
 }
 
@@ -31,25 +31,24 @@ export function FetchAllEvents() {
 export function FetchEvent(id) {
   const [isLoading, setLoading] = React.useState(true);
   const [repo, setRepo] = React.useState([]);
-  const url = `/eventAPI/${id}`;
+  const [error, setError] = React.useState({ status: false, message: "" });
+  const url = `http://localhost:3001/eventAPI/${id}`;
 
   const getRepo = async () => {
-    try {
-      const res = await axios.get(url);
-      if (res.statusText === "OK") {
-        const myRepo = res.data;
-        console.log(myRepo);
-        setRepo(myRepo);
+    await axios
+      .get(url)
+      .then((res) => {
+        setRepo(res.data);
         setLoading(false);
-      }
-    } catch (err) {
-      console.log(err);
-    }
+      })
+      .catch((err) => {
+        setError({ status: true, message: err.response.data.error });
+      });
   };
 
   React.useEffect(() => {
     getRepo();
   }, []);
 
-  return { repo, isLoading };
+  return { repo, isLoading, error };
 }

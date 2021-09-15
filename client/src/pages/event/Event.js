@@ -15,10 +15,18 @@ export default function EventPage() {
   const { id } = useParams();
 
   //fetching data
-  const { repo, isLoading } = FetchEvent(id);
+  const { repo, isLoading, error } = FetchEvent(id);
 
   // if loading
-  if (isLoading) {
+
+  if (error.status === true) {
+    return (
+      <Container>
+        <h1>Uh Oh! Something is wrong in the server</h1>
+        <h2>{error.message}</h2>
+      </Container>
+    );
+  } else if (isLoading === true && error.status === false) {
     return (
       <div class="parent-loader">
         <div class="loader">
@@ -31,7 +39,7 @@ export default function EventPage() {
     );
   }
   //loading complete
-  else {
+  else if (isLoading === false && error.status === false) {
     return (
       <Container>
         {/* Title */}

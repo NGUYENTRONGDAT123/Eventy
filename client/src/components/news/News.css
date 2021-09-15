@@ -2,3 +2,11 @@
   padding: 10px;
   border: 1px solid chocolate;
 }
+
+a {
+  color: #000 !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+}

@@ -25,3 +25,8 @@ image {
     max-width: 960px;
   }
 }
+
+.button-event:hover {
+  box-shadow: 0 5px 35px 0px rgba(0, 0, 0, 0.1);
+  background-color: rgb(117, 211, 180) !important;
+}
