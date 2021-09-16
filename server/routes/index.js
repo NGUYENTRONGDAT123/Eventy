@@ -40,6 +40,7 @@ router.get("/eventAPI/:eventID", async function (req, res, next) {
     );
 
     // using the venue name to get the news regrading to it
+    // let headline = eventData.data.title.replace(/\s/g, "%20");
     let headline = eventData.data.performers[0].name;
 
     const newsData = await axios.get(
@@ -51,6 +52,7 @@ router.get("/eventAPI/:eventID", async function (req, res, next) {
       event: eventData.data,
       weather: weatherData.data,
       news: newsData.data,
+      headline: eventData.data.title.replace(/\s/g, "%20"),
     });
   } catch (err) {
     //errors

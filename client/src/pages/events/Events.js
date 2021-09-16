@@ -116,7 +116,7 @@ export default function EventsPage() {
                     <img src={e.performers[0].image} alt="" height="240" />
                   </Col>
                   <Col xs={6} md={8}>
-                    <p>Time: {e.datetime_local}</p>
+                    <p>Time: {e.datetime_utc.replace("T", " ")} (UTC)</p>
                     <p>Venue: {e.venue.name}</p>
                     <p>Type: {e.type}</p>
                     <p>Address: {e.venue.address}</p>
