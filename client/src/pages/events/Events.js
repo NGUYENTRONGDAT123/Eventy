@@ -73,6 +73,7 @@ export default function EventsPage() {
               name="email"
               placeholder="Enter Event Name to Search"
               onChange={handleChange}
+              value={input}
             />
             <Button appearance="primary" onClick={handleSearch}>
               Search
@@ -82,6 +83,9 @@ export default function EventsPage() {
         <Row>
           <Col>
             <ButtonToolbar fluid>{renderPrevButton()}</ButtonToolbar>
+          </Col>
+          <Col className="page-name">
+            <p>Page: {page}</p>
           </Col>
           <Col>
             <ButtonToolbar>

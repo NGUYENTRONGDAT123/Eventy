@@ -20,6 +20,7 @@ export function FetchAllEvents(q, page) {
   };
 
   React.useEffect(() => {
+    setLoading(true);
     getRepo();
   }, [q, page]);
   if (repo !== []) {

@@ -20,7 +20,7 @@ router.get("/eventsAPI", async function (req, res, next) {
     return res.status(200).json(eventsData.data);
   } catch (err) {
     // next(err);
-    res.status(404).json({ error: "Bad Request!" });
+    next(res.status(404).json({ error: "Bad Request!" }));
   }
 });
 
@@ -54,7 +54,7 @@ router.get("/eventAPI/:eventID", async function (req, res, next) {
     });
   } catch (err) {
     //errors
-    return res.status(404).json({ error: "Bad Request!" });
+    next(res.status(404).json({ error: "Bad Request!" }));
   }
 });
 
