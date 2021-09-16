@@ -30,6 +30,7 @@ router.get("/eventAPI/:eventID", async function (req, res, next) {
 
   try {
     //getting event data
+    console.log("hello");
     const eventData = await axios.get(
       `https://api.seatgeek.com/2/events/${eventID}?client_id=${eventKey}`
     );
@@ -44,7 +45,7 @@ router.get("/eventAPI/:eventID", async function (req, res, next) {
     let headline = eventData.data.performers[0].name;
 
     const newsData = await axios.get(
-      `https://newsapi.org/v2/everything?qInTitle=${headline}&apiKey=${newsKey}&pageSize=5&language=en`
+      `https://newsapi.org/v2/everything?q=${headline}&apiKey=${newsKey}&pageSize=5&language=en`
     );
     // successful returning data
     return res.status(200).json({
@@ -52,11 +53,11 @@ router.get("/eventAPI/:eventID", async function (req, res, next) {
       event: eventData.data,
       weather: weatherData.data,
       news: newsData.data,
-      headline: eventData.data.title.replace(/\s/g, "%20"),
     });
   } catch (err) {
     //errors
-    next(res.status(404).json({ error: "Bad Request!" }));
+    // next(res.status(404).json({ error: "Bad Request!" }));
+    next(err);
   }
 });
 

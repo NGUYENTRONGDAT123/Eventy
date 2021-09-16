@@ -6,7 +6,7 @@ export function FetchAllEvents(q, page) {
   const [repo, setRepo] = React.useState([]);
   const [isLoading, setLoading] = React.useState(true);
   const [error, setError] = React.useState({ status: false, message: "" });
-  const url = `http://localhost:3001/eventsAPI?q=${q}&page=${page}`;
+  const url = `/eventsAPI?q=${q}&page=${page}`;
   const getRepo = async () => {
     await axios
       .get(url)
@@ -34,7 +34,7 @@ export function FetchEvent(id) {
   const [isLoading, setLoading] = React.useState(true);
   const [repo, setRepo] = React.useState([]);
   const [error, setError] = React.useState({ status: false, message: "" });
-  const url = `http://localhost:3001/eventAPI/${id}`;
+  const url = `/eventAPI/${id}`;
 
   const getRepo = async () => {
     await axios
@@ -50,7 +50,7 @@ export function FetchEvent(id) {
 
   React.useEffect(() => {
     getRepo();
-  });
+  }, []);
 
   return { repo, isLoading, error };
 }
