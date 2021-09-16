@@ -22,6 +22,7 @@ export function FetchAllEvents(q, page) {
   React.useEffect(() => {
     setLoading(true);
     getRepo();
+    // eslint-disable-next-line
   }, [q, page]);
   if (repo !== []) {
     return { repo, isLoading, error };
@@ -49,7 +50,7 @@ export function FetchEvent(id) {
 
   React.useEffect(() => {
     getRepo();
-  }, []);
+  });
 
   return { repo, isLoading, error };
 }

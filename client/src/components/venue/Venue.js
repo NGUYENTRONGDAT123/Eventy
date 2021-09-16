@@ -18,7 +18,7 @@ export default function Venue(props) {
             />
           </Col>
           <Col xs={6} md={8}>
-            <p>Time: {venueData.datetime_local}</p>
+            <p>Time: {venueData.datetime_utc.replace("T", " ")} (UTC)</p>
             <p>Venue: {venueData.venue.name}</p>
             <p>Type: {venueData.type.replaceAll("_", " ")}</p>
             <p>Address: {venueData.venue.address}</p>

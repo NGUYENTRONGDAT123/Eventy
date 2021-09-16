@@ -4,7 +4,7 @@ CAB432 Asignment
 
 This is an assignment dedicate mashing up api
 
-## Installation
+## Installation (Recommend using Linux Ubuntu)
 
 Step 1: Open Terminal and Install Docker
 
