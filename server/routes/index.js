@@ -40,7 +40,7 @@ router.get("/eventAPI/:eventID", async function (req, res, next) {
       `https://api.weatherbit.io/v2.0/current?lat=${location.lat}&lon=${location.lon}&key=${weatherKey}`
     );
 
-    // using the venue name to get the news regrading to it
+    // using the performers' name to get the news regrading to it
     // let headline = eventData.data.title.replace(/\s/g, "%20");
     let headline = eventData.data.performers[0].name;
 
@@ -56,8 +56,7 @@ router.get("/eventAPI/:eventID", async function (req, res, next) {
     });
   } catch (err) {
     //errors
-    // next(res.status(404).json({ error: "Bad Request!" }));
-    next(err);
+    next(res.status(404).json({ error: "Bad Request!" }));
   }
 });
 
