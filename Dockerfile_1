@@ -11,17 +11,16 @@ RUN apt-get install npm -y
 RUN npm i nodemon -g
 
 #create app directory
-COPY /Eventy /Eventy
-RUN ls
+COPY . /app
 
 # Install dependencies in client
-WORKDIR /Eventy/client
+WORKDIR /app/client
 RUN npm i
 # Build client
 RUN npm run build
 
 # Install dependencies in server
-WORKDIR /Eventy/server
+WORKDIR /app/server
 RUN npm i
 
 #Expose port
